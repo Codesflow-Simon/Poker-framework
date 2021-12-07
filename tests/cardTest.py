@@ -4,25 +4,17 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '../s
 
 import unittest
 from itertools import product
-from card import Card, suit_num_dict, rank_num_dict
-
-deck = []
-suits = []
-ranks = []
-for suit, rank in product(suit_num_dict.keys(),rank_num_dict.keys()):
-    deck.append(Card(suit, rank))
-    suits.append(suit)
-    ranks.append(rank)
+from util import deck, suits, ranks
 
 class TestCards(unittest.TestCase):
     def test_getters(self):
         for suit, rank, card in zip(suits, ranks, deck):
-            self.assertEquals(suit, card.get_suit())
-            self.assertEquals(rank, card.get_rank())
+            self.assertEqual(suit, card.get_suit())
+            self.assertEqual(rank, card.get_rank())
 
     def test_to_string(self):
         for suit, rank, card in zip(suits, ranks, deck):
-            self.assertEquals(card.to_string(), rank + " of " + suit )
+            self.assertEqual(card.__str__(), rank + " of " + suit )
 
     def test_encodings(self):
         seen = set()

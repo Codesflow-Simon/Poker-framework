@@ -8,6 +8,9 @@ class Card:
         self.suit = suit
         self.rank = rank
 
+    def __repr__(self):
+        return self.rank + " of " + self.suit
+
     def get_suit(self):
         return self.suit
 
@@ -24,3 +27,6 @@ class Card:
         
     def equals(self, other):
         return self.suit == other.get_suit() and self.rank == other.get_rank()
+
+    def copy(self):
+        return Card(self.suit, self.rank)

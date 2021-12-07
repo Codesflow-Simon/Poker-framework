@@ -1,11 +1,27 @@
 from card import Card
 
 class Hand:
-    def __init__(self):
-        self.cards = []
+    def __init__(self, hand=[]):
+        self.cards = hand
+
+    def __len__(self):
+        return len(self.cards)
+
+    def __getitem__(self, sub):
+        return self.cards[sub]
 
     def __iter__(self):
-        return get_cards()
+        return iter(self.cards)
+
+    def __repr__(self):
+        if len(self)==0: return "[]"
+        builder = "Hand: ["
+        for card in self[:-1]:
+            builder += str(card) + ", "
+        builder += str(self.get_cards()[-1]) + "]"
+
+        
+        return builder
 
     def add_card(self, card):
         self.cards.append(card)
@@ -20,9 +36,9 @@ class Hand:
         return self.cards
 
     def copy(self):
-        newHand = Hand()
+        newHand = Hand([])
         for card in self:
-            newHand.add_card(card)
+            newHand.add_card(card.copy())
         return newHand
 
     def reset(self):
