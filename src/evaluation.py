@@ -1,4 +1,3 @@
-from card import Card, rank_num_dict
 from itertools import combinations
 from collections import Counter
 

@@ -1,6 +1,6 @@
-from card import Card
 from itertools import product
 from random import randint
+from card import Card
 
 SUITS = ("spades", "clubs", "diamonds", "hearts")
 RANKS = ("2","3","4","5","6","7","8","9","10","J","Q","K","A")
@@ -13,7 +13,7 @@ class Deck:
         self.deck = []
         for suit, rank in product(SUITS,RANKS):
             self.deck.append(Card(suit, rank))
-        shuffle()
+        self.shuffle()
 
     def get_deck(self):
         return self.deck
@@ -38,11 +38,3 @@ class Deck:
         temp = self.deck[-1]
         del self.deck[-1]
         return temp
-
-if __name__ == "__main__":
-    deck = Deck()
-    deck.print_deck()
-    print("\n")
-    deck.shuffle()
-    deck.print_deck()
-    
